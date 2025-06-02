@@ -1,0 +1,653 @@
+
+ASSIGNMENT NO. 4  SHELL SCRIPTING 
+
+
+1) Write a program to find addition of three numbers.
+-->
+
+    read -p "Enter any three numbers: " num1 num2 num3
+
+    echo "Addition of three no. $num1 + $num2 + $num3 = $((num1 + num2 + num3))"
+
+
+Output =>
+
+Enter any three numbers: 10 20 30
+Addition of three no. 10 + 20 + 30 = 60
+
+Enter any three numbers: 25 25 50
+Addition of three no. 25 + 25 + 50 = 100
+
+
+
+
+2) Write a program to find addition, subtraction, multiplication, division of two numbers.
+-->
+
+    read -p "Enter any two numbers: " num1 num2
+
+    echo "Addition is: $((num1 + num2))"
+    echo "Subtraction is: $((num1 - num2))"
+    echo "Multiplication is: $((num1 * num2))"
+    echo "Division is: $((num1 / num2))"
+
+
+Output =>
+
+Enter any two numbers: 20 10
+Addition is: 30
+Subtraction is: 10
+Multiplication is: 200
+Division is: 2
+
+Enter any two numbers: 45 30
+Addition is: 75
+Subtraction is: 15
+Multiplication is: 1350
+Division is: 1
+
+
+
+
+3) Write a program to find average of four numbers.
+-->
+
+    read -p "Enter any 4 numbers: " a b c d
+
+    echo "Average of $a, $b, $c and $d is: $(((a + b + c + d) / 4))"
+
+
+Output =>
+
+Enter any 4 numbers: 5 10 15 20
+Average of 5, 10, 15 and 20 is: 12
+
+Enter any 4 numbers: 25 30 35 40
+Average of 25, 30, 35 and 40 is: 32
+
+
+
+
+4) Write a program to find area of circle.
+-->
+
+    readonly PI=314
+
+    read -p "Enter the radius of the circle: " radius
+
+    # Before this echo command execute you have to download bc => sudo apt install bc
+
+    echo "Area of the circle is: $(echo "scale=2; $PI * $radius * $radius / 100" | bc)"
+
+
+Output =>
+
+Enter the radius of the circle: 5
+Area of the circle is: 78.50
+
+Enter the radius of the circle: 10
+Area of the circle is: 314.00
+
+
+
+
+5) Write a program to find circumference (perimeter) of circle
+-->
+
+    readonly PI=3.14
+
+    read -p "Enter the radius of the circle: " radius
+
+    echo "The circumference of the circle is: $(echo "2 * $PI * $radius" | bc)"
+
+
+Output =>
+
+Enter the radius of the circle: 3
+The circumference of the circle is: 18.84
+
+Enter the radius of the circle: 10
+The circumference of the circle is: 62.80
+
+
+
+
+6) Write a program to find area of triangle.
+-->
+
+    read -p "Enter the base: " base
+    read -p "Enter the height: " height
+
+    echo "Area of triangle: $(echo "0.5 * $base * $height" | bc)"
+
+
+Output =>
+
+Enter the base: 10
+Enter the height: 5
+Area of triangle: 25.0
+                
+Enter the base: 42
+Enter the height: 4
+Area of triangle: 84.0
+                         
+
+    
+
+7) Write a program to find area of square.
+-->
+
+    read -p "Enter the side: " side
+
+    echo "Area of square is: $((side * side))"
+
+
+Output =>
+
+Enter the side: 4
+Area of square is: 16
+
+Enter the side: 10
+Area of square is: 100
+
+
+
+
+8) Write a program to find area of rectangle
+-->
+
+    read -p "Enter the length: " length
+    read -p "Enter the width: " width
+
+    echo "Area of rectangle is: $((length * width))"
+
+
+Output =>
+
+Enter the length: 10
+Enter the width: 5
+Area of rectangle is: 50
+
+Enter the length: 2
+Enter the width: 9
+Area of rectangle is: 18
+
+
+
+
+9) Write a program to check entered number is positive or negative.
+-->
+
+    read -p "Enter a number: " num
+
+    if [ $num -gt 0 ]; then
+        echo "$num is positive"
+    else
+        echo "$num is negative"
+    fi
+
+
+
+Output =>
+
+Enter a number: 10
+10 is positive
+
+Enter a number: -10
+-10 is negative
+
+
+
+
+10) Write a program to check entered number is even or odd.
+-->
+
+    read -p "Enter a number: " num
+
+    if [ $(expr $num % 2) -eq 0 ]; then
+        echo "$num is Even number"
+    else
+        echo "$num is Odd number"
+    fi
+
+
+Output =>
+
+Enter a number: 2
+2 is Even number
+
+Enter a number: 3
+3 is Odd number
+
+
+
+
+11) Write a program to find maximum number between two numbers.
+-->
+
+    read -p "Enter the 1st number: " num1
+    read -p "Enter the 2nd number: " num2
+
+
+    if [ $num1 -gt $num2 ]; then
+        echo "$num1 is maximum"
+    elif [ $num1 -lt $num2 ]; then
+        echo "$num2 is maximum"
+    else
+        echo "Both numbers are equal"
+    fi
+
+
+
+Output =>
+
+Enter the 1st number: 10
+Enter the 2nd number: 20
+20 is maximum
+                                                                                                                                              
+Enter the 1st number: 30
+Enter the 2nd number: 10
+30 is maximum
+
+
+
+
+12) Write a program to find minimum number between two numbers.
+-->
+
+    read -p "Enter the 1st number: " num1
+    read -p "Enter the 2nd number: " num2
+
+    if [ $num1 -lt $num2 ]; then
+        echo "$num1 is minimum"
+    elif [ $num2 -lt $num1 ]; then
+        echo "$num2 is minimum"
+    else
+        echo "Both numbers are equal"
+    fi
+
+
+
+Output =>
+
+Enter the 1st number: 10
+Enter the 2nd number: 20
+10 is minimum
+
+Enter the 1st number: 20
+Enter the 2nd number: 10
+10 is minimum
+                                                                                                                                              
+
+
+
+13) Write a program to find maximum number between three numbers.
+-->
+
+    read -p "Enter the 1st number: " num1
+    read -p "Enter the 2nd number: " num2
+    read -p "Enter the 3rd number: " num3
+
+
+    if [[ $num1 -gt $num2 &&  $num1 -gt $num3 ]]; then
+        echo "$num1 is maximum"
+    elif [[ $num2 -gt $num1 && $num2 -gt $num3 ]]; then
+        echo "$num2 is maximum"
+    else
+        echo "$num3 is maximum"
+    fi
+
+
+Output =>
+
+Enter the 1st number: 10
+Enter the 2nd number: 20
+Enter the 3rd number: 30
+30 is maximum
+
+Enter the 1st number: 10
+Enter the 2nd number: 100
+Enter the 3rd number: 20
+100 is maximum
+
+
+
+
+14) Write a program to find minimum number between three numbers
+-->
+
+    read -p "Enter the 1st number: " num1
+    read -p "Enter the 2nd number: " num2
+    read -p "Enter the 3rd number: " num3
+
+
+    if [[ $num1 -lt $num2 &&  $num1 -lt $num3 ]]; then
+        echo "$num1 is minimum"
+    elif [[ $num2 -lt $num1 && $num2 -lt $num3 ]]; then
+        echo "$num2 is minimum"
+    else
+        echo "$num3 is minimum"
+    fi
+
+
+
+Output =>
+
+Enter the 1st number: 100
+Enter the 2nd number: 50
+Enter the 3rd number: 200
+50 is minimum
+
+Enter the 1st number: 300
+Enter the 2nd number: 400
+Enter the 3rd number: 4
+4 is minimum
+
+
+
+
+15) Write a program to check entered number is positive or negative or zero.
+-->
+
+    read -p "Enter a number: " num
+
+    if [ $num -gt 0 ]; then
+        echo "$num is Positive"
+    elif [ $num -lt 0 ]; then
+        echo "$num is Negative"
+    else
+        echo "$num is Zero"
+    fi
+
+
+Output =>
+
+Enter a number: 1
+1 is Positive
+
+Enter a number: -1
+-1 is Negative
+
+Enter a number: 0
+0 is Zero
+
+
+
+
+16) Write a program which find sum of first ‘n’ numbers.
+-->
+
+    read -p "Enter a number: " n
+
+    echo "The sum of the first $n numbers is: $(( n * (n + 1) / 2 ))"
+
+    # OR
+
+    sum=0
+    for((i = 1; i <= $n; i++)); do
+        ((sum += $i))
+    done
+
+    echo "The sum of the first $n numbers is: $sum"
+
+
+Output =>
+
+Enter a number: 5
+The sum of the first 5 numbers is: 15
+
+Enter a number: 10
+The sum of the first 10 numbers is: 55
+
+Enter a number: 7
+The sum of the first 7 numbers is: 28
+
+
+
+
+17) Write a program which check entered number is Armstrong or not. (1, 153, 370,371 etc. are Armstrong)
+-->
+
+    read -p "Enter any number: " num
+
+    len=${#num}
+    sum=0
+    temp=$num
+
+    while [ $num -gt 0 ]; do
+        r=$((num%10))
+        sum=$((sum +r ** len))
+        num=$(($num/10))
+    done
+
+    if [ $temp -eq $sum ]; then
+        echo "$temp is Armstrong number"
+    else
+        echo "$temp is not Armstrong number"
+    fi
+
+
+Output =>
+
+Enter any number: 153
+153 is Armstrong number
+
+Enter any number: 1634         
+1634 is Armstrong number
+
+Enter any number: 1635
+1635 is not Armstrong number
+
+
+
+
+18) Write a program which check entered number is Prime or not.
+-->
+
+    read -p "Enter a number: " num
+
+    for ((i = 2; i < num; i++)); do
+        [ $((num % i )) -eq 0 ] && echo "$num is not a Prime number" && exit
+    done
+
+    echo "$num is a Prime number"
+
+
+Output =>
+
+Enter a number: 3
+3 is a Prime number
+3 is a Prime number
+
+Enter a number: 4
+4 is not a Prime number
+
+
+
+19) Write a program that prints following pattern:
+-->
+
+1) 
+
+ 1 
+ 1 2 
+ 1 2 3 
+ 1 2 3 4
+
+    read -p "Enter a number: " n
+
+    for (( i = 1; i <= n; i++)); do
+        for (( j = 1; j <= i; j++ )); do
+            echo -n "$j "
+        done
+        echo
+    done
+
+
+    # OR
+
+
+    for i in $(seq 1 $n); do
+    for j in $(seq 1 $i); do echo -n "$j ";   done
+    echo
+    done
+
+
+Output =>
+
+Enter a number: 4
+ 1 
+ 1 2 
+ 1 2 3 
+ 1 2 3 4 
+
+
+
+
+2)
+
+ 1 2 3 4
+ 1 2 3
+ 1 2
+ 1 
+
+    read -p "Enter a number: " n
+
+    for (( i = 1; i <= n; i++ )); do
+        for (( j = 1; j <= n-i+1; j++ )); do  echo -n "$j "; done
+        echo
+    done
+
+
+Output =>
+
+Enter a number: 4
+ 1 2 3 4 
+ 1 2 3 
+ 1 2 
+ 1
+
+
+
+
+3)
+
+ A B C D
+ A B C
+ A B
+ A 
+
+
+    read -p "Enter a number: " n
+
+    for (( i = n; i >= 1; i-- )); do
+        for (( j = 1; j <= $i; j++)); do
+            echo -n "$(echo {A..Z} | cut -d ' ' -f$j) "
+        done
+        echo
+    done
+
+
+Output =>
+
+Enter a number: 4
+ A B C D 
+ A B C 
+ A B 
+ A
+
+
+
+
+4) 
+
+ A 
+ A B
+ A B C
+ A B C D
+
+
+    read -p "Enter a number: " n
+
+    for (( i = 1; i <= n; i++ )); do
+        for (( j = 1; j <= $i; j++ )); do
+            echo -n "$(echo {A..Z} | cut -d ' ' -f$j) "
+        done
+        echo 
+    done
+
+
+Output =>
+
+Enter a number: 4
+ A 
+ A B 
+ A B C 
+ A B C D
+
+
+
+
+5)
+
+     *
+    * *
+  *  *  *
+ *  *  *  *
+
+
+    read -p "Enter any number: " n
+
+    for (( i = 1; i <= n; i++ )); do
+        for (( k = 1; k <= n-i; k++ )) do
+            echo -n " "
+        done
+        for (( j = 1; j <= i; j++ )) do
+            echo -n " *"
+        done
+        echo
+    done
+
+
+
+Output =>
+ 
+Enter any number: 4
+     *
+    * *
+   * * *
+  * * * *
+
+
+
+
+6) 
+
+ *  *  *  *
+   *  *  *
+     *  * 
+       *
+
+
+
+    read -p "Enter any number: " n
+
+    for (( i = n; i >= 1; i-- )); do
+        for (( k = 1; k <= n-i; k++)); do
+            echo -n " "
+        done
+        for (( j = 1; j <= i; j++ )); do
+            echo -n "* "
+        done
+        echo
+    done
+
+
+Output =>
+
+Enter any number: 4
+ * * * * 
+  * * * 
+   * * 
+    * 
+             
